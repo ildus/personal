@@ -1,0 +1,46 @@
+{% extends "blog/base.html" %}
+{% load blog_tags %}
+{% block content %}
+{% if article %}
+	<div class="article">
+		<h3> {{article.title}} </h3>
+		<div class="article_info">
+			Автор - {{article.author}}, {{article.created|date:"m.d.Y"}}
+			{% if article.tags %}
+				, теги -
+				{%for tag in article.get_tags %}
+					
+				 <a href="{% url tag tag|urlencode %}">{{tag}}</a>
+				{% endfor %}
+			{% endif %}
+		</div>
+		
+		{{ article.html }}
+		
+		<script type="text/javascript">
+			var ARTICLE_ID = {{article.id}};
+			var COMMENT_ID = 0;
+		</script>
+			
+	</div>
+	<div class="comments">
+		<div class="head"> Комментарии </div>
+		{% if user.is_authenticated %}
+		<div id="adding_form" class="one_comment">
+			<form id="f_addcomment">
+				<div id="response"> </div>
+				<textarea id="edt_comment"></textarea>
+				<br />
+				<button class="btn_add_comment"> Сохранить комментарий </button>
+				<button class="btn_cancel" style="display: none"> Отмена </button>
+			</form>
+		</div>
+		{% endif %}
+		{% for one in comments %}
+			{% show_comment one %}
+		{% empty %}
+		<strong> Комментариев нет </strong>
+		{% endfor %}
+	</div>
+{% endif %}
+{% endblock %}

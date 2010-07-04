@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block auth %}
+	<div class="block">
+	  	<div class="block_head"> Авторизация </div>
+	  	<div class="block_content">
+			{% if user.is_authenticated %}
+				Вы авторизованы как {{user}} <br />
+				<form action="/scipio/logout/" method="POST">
+					<button>выйти</button>
+				</form>
+			{% else %}
+			<form action="{% url scipio_login %}" method="post" id="auth_form">
+			  {{ form.as_table }}
+			
+			  <button>Войти</button>
+			</form>
+			{% endif %}
+		</div>
+	  </div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "blog/base.html" %}
+{% load blog_tags %}
+{% block content %}
+	<div id="articles">
+		{% for one in articles %}
+			{% show_article_description one %}				
+		{% empty %}
+			Нет записей
+		{% endfor %}
+	</div>
+	{% paginator %}
+{% endblock %}

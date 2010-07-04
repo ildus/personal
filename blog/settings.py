@@ -1,0 +1,3 @@
+BLOG_BASE_TEMPLATE = 'base.html'
+
+BLOG_ENTRY_COUNT = 2

@@ -1,0 +1,7 @@
+<div id="#comment{{one.id}}" class="one_comment">
+	<div class="comment_info">
+		{{one.author}}, <a href="{{one.get_absolute_url}}"> 
+		{{one.created|date:"d.m.Y, H:i"}} </a>:
+	</div>
+	{{ one.html }}
+</div>

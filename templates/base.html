@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>my personal site</title>
+
+<link rel="stylesheet" href="{{MEDIA_URL}}main/css/screen.css" type="text/css" media="screen, projection"/>
+<link rel="stylesheet" href="{{MEDIA_URL}}main/css/print.css" type="text/css" media="print"/>
+<!--[if lt IE 8]><link rel="stylesheet" href="{{MEDIA_URL}}main/css/ie.css" type="text/css" media="screen, projection"/><![endif]-->
+
+<link rel="stylesheet" href="{{MEDIA_URL}}main/css/base.css" type="text/css" media="screen, projection"/>
+
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/dojo/1.4/dijit/themes/nihilo/nihilo.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/dojo/1.4/dojo/dojo.xd.js" type="text/javascript" djConfig="parseOnLoad:true, isDebug:true"></script>
+{% block head %} {% endblock %}
+</head>
+<body class="niholo">
+<div class="container">
+  <!--div class="span-24 last" id="header"> 
+  	<h3> Добро пожаловать на мой личный сайт, а также блог </h3>
+  	<h4> Если вы заинтересовались моими работами или вам нужна помощь, вы можете со мной 
+  	<a href="emailto: k-dus@yandex.ru"> связаться </a>
+  	</h4>
+  </div-->
+  <div class="clear span-24 last" id="menu">
+    <div class="span-16">
+    	<h1> <a class="header_text" href="/"> <em>ildus</em>.org </a> {%block header_text %} {% endblock %} </h1>
+    </div>
+    <div class="span-8 last navbar"> 
+    	<ul id="main_navigation">
+    		<li><a href="/"> Обо мне </a></li>
+    		<li><a href="/portfolio/"> Портфолио </a></li>
+    		<li><a href="/blog/"> Блог </a></li>
+    	</ul>
+    </div>
+  </div>
+  <div class="clear span-24 last" id="main"> 
+  	{% block main %}
+	  	<div class="span-17" id="content">
+	  	{% block content %} <div> </div>{% endblock content %}
+	  	</div>
+	  	<div class="span-7 last" id="right_col">
+	  	{% block auth %}
+	  		<div class="block">
+	  			<div class="block_head"> Авторизация </div>
+	  			<div class="block_content">
+	  				{% if user.is_authenticated %}
+	  				Вы авторизованы как {{user}} <br />
+	  				<form action="/scipio/logout/" method="POST">
+	  					<button>выйти</button>
+	  				</form>
+	  				{% else %}
+	  					<form action="{% url scipio_login %}" method="post" id="auth_form">
+						  	{{ auth_form.as_table }}						
+						  	<button>Войти</button>
+						</form>
+	  				{% endif %}
+	  			</div>
+	  		</div>
+	  	{% endblock %}
+	  	{% block right_column %}  {% endblock right_column %}
+  		</div>
+  	{% endblock main %}
+  </div>
+  <div class="clear span-24 last" id="footer"> 
+  	&copy; Ильдус Курбангалиев
+  </div>
+</div>
+</body>
+</html>
