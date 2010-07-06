@@ -8,6 +8,7 @@ urlpatterns = patterns('',
                        
     (r'^admin/', include(admin.site.urls)),
     (r'^blog/', include('blog.urls')),
+    (r'^portfolio/', include('portfolio.urls')),
     (r'^scipio/', include('scipio.urls')),
     (r'^$', 'main.views.index')
 )

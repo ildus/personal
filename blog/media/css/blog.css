@@ -13,9 +13,12 @@
 }
 
 .one_article h4 a {
-	color: #1a4780;
 	font-weight: bold;
 	text-decoration: none;
+}
+
+.one_article h4 a:hover {
+	text-decoration: underline;
 }
 
 .article h3 {
@@ -29,6 +32,11 @@
 	padding: 3px 5px;
 	font-size: 70.1%;
 	font-family: Verdana, Arial, sans-serif;
+}
+
+.article p {
+	text-indent: 2em;
+	text-align: justify;
 }
 
 .comments {

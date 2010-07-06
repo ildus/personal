@@ -12,7 +12,7 @@ from tagging.models import Tag, TaggedItem
 
 import blog
 
-from blog.filters import filters
+from lib.filters import filters
 
 class Category(models.Model):
     name = models.CharField(_('name'), max_length = 255)

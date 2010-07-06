@@ -24,35 +24,3 @@ def show_comment(comment):
     context = template.Context({'one': comment})
     
     return comment_template.render(context)
-
-class PaginatorNode(template.Node):
-    def render(self,context):
-        page=context['page']
-        page_number=context['page_number']
-        class_name='paginator'
-        next_text='дальше →'
-        previous_text='← назад'
-        if page.has_next():
-            next_link='<a href="?page=%s" class="next">%s</a> '%(page_number+1,next_text)
-        else:
-            next_link=''
-
-        if page.has_previous():
-          previous_link='<a href="?page=%s" class="previous">%s</a> '%(page_number-1,previous_text)
-        else:
-          previous_link=''
-
-        if next_link or previous_link:
-            return '<div class="%s">%s %s</div>'%(class_name,previous_link,next_link)
-        else:
-            return ''
-
-@register.tag
-def paginator(parser, token):
-    '''
-    Выводит навигатор по страницам.
-
-    В контексте должны находиться переменные "page" с объектом
-    paginator'а и "page_number" с номером страницы (счет с 1).
-    '''
-    return PaginatorNode()

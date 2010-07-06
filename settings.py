@@ -103,10 +103,13 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
+    'sorl.thumbnail',
+    'lib',
     'tagging',
     'scipio',
     'main',
     'blog',
+    'portfolio',
 )
 
 FORCE_LOWERCASE_TAGS = True

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block head %}
+	<link rel="stylesheet" href="{{MEDIA_URL}}portfolio/css/portfolio.css" type="text/css" media="screen, projection"/>
+	<script src="{{MEDIA_URL}}portfolio/js/portfolio_core.js" type="text/javascript"></script>
+{% endblock %}
+{% block header_text %}
+	/ <a class="header_text" href="{% url portfolio.views.solutions %}"> портфолио </a>
+{% endblock %}
+{% block content %}
+	portfolio content
+{% endblock %}
+{% block right_column %}
+	<div class="block">
+		<div class="block_head"> Теги </div>
+		<div class="block_content">
+			<div class=".cloud">
+				{% load tagging_tags %}
+				{% tag_cloud_for_model portfolio.Solution as tags with steps=9 min_count=0 distribution=log %}
+				{% for tag in tags %}
+	
+			       <a href="{% url ptag tag|urlencode %}" style="font-size: 1.{{ tag.font_size }}em">{{ tag }}</a>&nbsp;
+			
+			    {% endfor %}
+		    </div>
+		</div>
+	</div>
+{% endblock %}

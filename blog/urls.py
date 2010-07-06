@@ -8,5 +8,5 @@ urlpatterns = patterns('',
     (r'^category/([a-z0-9_]+)/$', views.category),
     (r'^comment/edit/', views.comment_edit),
     (r'^comment/(\d+)/$', views.comment),
-    url(r'^tag/(?P<tag>[^/]+)/$', views.articles_by_tag, name = "tag"),
+    url(r'^tag/(?P<tag>[^/]+)/$', views.articles_by_tag, name = "blog_tag"),
 )

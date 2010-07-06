@@ -32,7 +32,7 @@
 				{% tag_cloud_for_model blog.Article as tags with steps=9 min_count=0 distribution=log %}
 				{% for tag in tags %}
 	
-			       <a href="{% url tag tag|urlencode %}" style="font-size: 1.{{ tag.font_size }}em">{{ tag }}</a>&nbsp;
+			       <a href="{% url blog_tag tag|urlencode %}" style="font-size: 1.{{ tag.font_size }}em">{{ tag }}</a>&nbsp;
 			
 			    {% endfor %}
 		    </div>

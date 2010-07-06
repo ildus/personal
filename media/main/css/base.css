@@ -1,6 +1,6 @@
 body {
 	font-family: Georgia, serif;
-	font-size: 16px;
+	font-size: 14px;
 	font-style: normal;
 	font-weight: normal;
 	text-transform: normal;
@@ -14,11 +14,12 @@ form#auth_form label {
 }
 
 a {
-	color: #3760bf;
+	color: #27521B;
 }
 
 a:hover {
-	color: #08457e;
+	color: #27521B;
+	text-decoration: underline;
 }
 
 ul.errorlist {
@@ -32,8 +33,12 @@ ul.errorlist li {
 	color: white;
 }
 
+h1 {
+	font-size: 2.5em;
+}
+
 h1, h2, h3, h4, h5, h6 {
-	color: #061b35;
+	color: #433A2D;
 }
 
 .block {
@@ -92,8 +97,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 	#menu a.header_text {
-		color: black;
 		text-decoration: none;
+		font-weight: 600;
 	}
 	
 	#menu a.header_text:hover {
@@ -111,28 +116,33 @@ h1, h2, h3, h4, h5, h6 {
 	margin: 0 0 0 5px;
 }
 
+.navbar {
+	padding-top: 10px;
+}
+
 ul#main_navigation {
 	list-style-type: none;
 	padding: 0;
-	display: block;
 	margin: 0;
+	margin-right: 10px;
+	float: right;
 }
 
 	ul#main_navigation li {
 		display: inline-block;
-		padding: 0 10px;
+		padding: 0 0 0 20px;
 	}
 	
 		ul#main_navigation li a {
-			color: black;
 			text-decoration: none;
 			text-decoration: italic;
 			text-transform: lowercase;
 			font-weight: bold;
+			font-size: 110%;
 		}
 
 #right_col > div {
-	margin: 0 10px 10px 20px;
+	margin: 0 0px 10px 20px;
 }
 
 .search {

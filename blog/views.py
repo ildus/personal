@@ -6,67 +6,20 @@ from django.shortcuts import get_object_or_404, render_to_response, redirect
 from django.http import HttpResponse, Http404
 from django.template import RequestContext
 from django.utils import simplejson
-from django.core.paginator import Paginator, EmptyPage, InvalidPage
+
 from django.conf import settings
+from lib.decorators import render_with_context as _render_with_context, login_required, paginate_by
+from blog.context import default as default_context
 
 def render_with_context(func):
-    """ rendering with RequestContext """
-    
-    def my_render_function(request, *args, **kwargs):
-        template, data = func(request, *args, **kwargs)
-        data['categories'] = Category.objects.all()
-        data['comments'] = Comment.objects.all()
-        context = RequestContext(request, data)
-        return render_to_response(template, context_instance=context)
-    
-    return my_render_function
-
-def login_required(func):
-    def wrapper(request, *args, **kwargs):
-        if request.user.is_authenticated():
-            return func(request, *args, **kwargs)
-        else:
-            if request.is_ajax():
-                result = {'success': False, 'error': _('Authorization required')}
-                json = simplejson.dumps(result)
-                return HttpResponse(json, mimetype = 'application/json')
-            else:
-                return redirect('/login/')
-    
-    return wrapper
+    """ decorator with default context of blog """
+    return _render_with_context(default_context)(func)
 
 @render_with_context
 def article(request, slug):
     article = get_object_or_404(Article, slug = slug)
     
     return 'blog/article.html', {'article': article}
-
-def paginate_by(items_key, count):
-    ''' Разделяет на страницы, работает совместнго с тегом paginator '''
-    def pager(func):
-        def wrapper(request, *args, **kwargs):
-            all_data = func(request, *args, **kwargs)
-            paginator = Paginator(all_data[1][items_key], count)
-    
-            try:
-                page_number = int(request.GET.get('page', '1'))
-            except ValueError:
-                page_number = 1
-        
-            try:
-                page = paginator.page(page_number)
-            except (EmptyPage, InvalidPage):
-                page = paginator.page(paginator.num_pages)
-                
-            all_data[1]['page'] = page
-            all_data[1]['page_number'] = page_number
-            all_data[1][items_key] = page.object_list
-            
-            return all_data
-    
-        return wrapper
-    
-    return pager
 
 @render_with_context
 @paginate_by('articles', 10)

@@ -1,0 +1,33 @@
+{% extends "portfolio/base.html" %}
+{% block content %}
+	{% load thumbnail %}
+	{% load lib_tags %}
+	<h4>
+		Здесь я выкладываю свои работы
+	</h4>
+	{% for solution in solutions %}
+		<div class="one_solution">
+			<div class="solution_info">
+				<div class="image">
+				<img src="{% thumbnail solution.image 140x140 %}" />
+				</div>
+				<h4> <strong><em> {{solution.title }} </em> </strong></h4>
+				<div class="description">
+					{{solution.text}}
+				</div>
+				<ul>
+				{% if solution.url %}
+				<li>Веб-сайт: <a href="{{solution.url}}"> {{solution.url}}</a> </li>
+				{% endif %}
+				{% if solution.repository %}
+				<li>Исходники: <a href="{{solution.repository}}"> {{solution.repository}}</a> </li>
+				{% endif %}
+				</ul>
+			</div>
+		</div>
+		<br clear="all" />
+	{% empty %}
+		<h4> Портфолио не заполнено </h4>
+	{% endfor %}
+	{% paginator %}
+{% endblock %}

@@ -25,7 +25,8 @@ function init_blog() {
 						url: '/blog/comment/'+response.id_comment+'/',
 						handleAs: 'text',
 						load: function (response) {
-							dojo.place(response, dojo.byId('adding_form'), 'after')
+							dojo.place(response, dojo.byId('adding_form'), 'after');
+							dojo.destroy(dojo.byId("no_comments"));
 						},
 						error: function(error) {
 							show_error(error);

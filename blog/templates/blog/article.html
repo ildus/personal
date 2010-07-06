@@ -10,7 +10,7 @@
 				, теги -
 				{%for tag in article.get_tags %}
 					
-				 <a href="{% url tag tag|urlencode %}">{{tag}}</a>
+				 <a href="{% url blog_tag tag|urlencode %}">{{tag}}</a>
 				{% endfor %}
 			{% endif %}
 		</div>
@@ -39,7 +39,7 @@
 		{% for one in comments %}
 			{% show_comment one %}
 		{% empty %}
-		<strong> Комментариев нет </strong>
+		<strong id="no_comments"> Комментариев нет </strong>
 		{% endfor %}
 	</div>
 {% endif %}

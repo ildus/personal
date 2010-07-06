@@ -3,3 +3,4 @@ django-tagging
 markdown2
 python-openid
 html5lib
+sorl-thumbnail
