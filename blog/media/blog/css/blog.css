@@ -1,0 +1,103 @@
+code {
+	display: block;
+	background-color: #fffeef;
+	overflow: auto;
+	font-size: 13px;
+	border: 1px solid #eee;
+	padding: 5px;
+}
+
+.one_article {
+	display: block;
+	margin-bottom: 20px;	
+}
+
+.one_article .date {
+	font-weight: bold;
+	color: #3caa3c;
+	font-size: 12px;
+	font-family: monospace;
+}
+
+.one_article a {
+	text-decoration: none;
+	border-bottom: 1px dotted #aaa;
+}
+
+.one_article a:hover, .one_article a:focus {
+	text-decoration: none;
+}
+
+.article .article_info {
+	border-top: 1px dotted #dad871;
+	border-bottom: 1px dotted #dad871;
+	background-color: #fffeef;
+	margin-bottom: 10px;
+	padding: 0 10px;
+	font-size: 70.1%;
+	font-family: Verdana, Arial, sans-serif;
+}
+
+.article p {
+	text-align: justify;
+}
+
+.comments {
+	border-top: 1px dotted #dad871;
+	
+}
+
+.comments .head {
+	background-color: #fffddf;
+	padding: 3px 5px;
+}
+
+.comments .one_comment {
+	border-top: 1px dotted #dad871;
+	margin-bottom: 10px;
+	padding: 10px 0 0 35px;
+	background: transparent url(../images/comments-24.png) no-repeat left 15px;
+}
+
+.comments .one_comment textarea {
+	display: block;
+	width: 95%;
+	height: 100px;
+}
+
+.comments .comment_info {
+	margin-bottom: 10px;
+	font-family: Verdana, sans-serif;
+}
+	
+	.comments .comment_info a {
+		text-decoration: none;
+	}
+	
+	.comments .comment_info a:hover {
+		text-decoration: none;
+		color: #1a4780;
+	}
+	
+	.comments .comment_info .actions {
+		float: right;
+	}
+	
+.paginator {
+    padding: 5px 5px;
+    display: block;
+    border-top: 1px dashed #666;
+}
+
+.paginator a {
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.paginator a:hover, a:active {
+    text-decoration: underline;
+}
+
+.paginator .next {
+	float: right;
+}

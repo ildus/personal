@@ -2,7 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title>my personal site</title>
+
+{% block keywords %}
+	<meta name="description" content="Персональный сайт Ильдуса Курбангалиева">
+	<meta name="keywords" content="django python linux блог портфолио я статьи решения">
+{% endblock %}
+
+<title> {% block title %} Персональный сайт Ильдуса Курбангалиева {% endblock %}</title>
 
 <link rel="stylesheet" href="{{MEDIA_URL}}main/css/screen.css" type="text/css" media="screen, projection"/>
 <link rel="stylesheet" href="{{MEDIA_URL}}main/css/print.css" type="text/css" media="print"/>
@@ -16,12 +22,6 @@
 </head>
 <body class="niholo">
 <div class="container">
-  <!--div class="span-24 last" id="header"> 
-  	<h3> Добро пожаловать на мой личный сайт, а также блог </h3>
-  	<h4> Если вы заинтересовались моими работами или вам нужна помощь, вы можете со мной 
-  	<a href="emailto: k-dus@yandex.ru"> связаться </a>
-  	</h4>
-  </div-->
   <div class="clear span-24 last" id="menu">
     <div class="span-16">
     	<h1> <a class="header_text" href="/"> ildus.org </a> {%block header_text %} {% endblock %} </h1>
@@ -51,7 +51,7 @@
 	  				</form>
 	  				{% else %}
 	  					<form action="{% url scipio_login %}" method="post" id="auth_form">
-						  	{{ auth_form.as_table }}						
+						  	{{ auth_form.as_p }}						
 						  	<button>Войти</button>
 						</form>
 	  				{% endif %}

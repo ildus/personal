@@ -10,7 +10,8 @@ urlpatterns = patterns('',
     (r'^blog/', include('blog.urls')),
     (r'^portfolio/', include('portfolio.urls')),
     (r'^scipio/', include('scipio.urls')),
-    (r'^$', 'main.views.index')
+    (r'^$', 'main.views.index'),
+    (r'^about/$', 'main.views.about'),
 )
 
 if settings.DEBUG:

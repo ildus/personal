@@ -54,6 +54,7 @@ USE_L10N = True
 MEDIA_ROOT = rel('media')
 MEDIA_URL = '/media/'
 ADMIN_MEDIA_PREFIX = '/media/admin/'
+STATIC_ROOT = rel('media')
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '(i-%b6x)_7id8k0bf+%okp-q$bukxvav0@3p(u1-$f9u#q%+a4'
@@ -103,6 +104,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
+    'south',
+    'staticfiles',
     'sorl.thumbnail',
     'lib',
     'tagging',
@@ -113,3 +116,8 @@ INSTALLED_APPS = (
 )
 
 FORCE_LOWERCASE_TAGS = True
+
+try:
+    from local_settings import *
+except:
+    pass

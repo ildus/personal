@@ -1,0 +1,26 @@
+div#solutions {
+	padding-left: 5px;
+}
+
+.one_solution {
+	border-top: 1px dotted #666;
+	padding: 10px 0;
+	margin-bottom: 10px;
+}
+
+.one_solution .image {
+	display: inline;
+	margin-right: 10px;
+	width: 160px;
+	float: left;
+}
+
+.one_solution .solution_info {
+	vertical-align: top;
+}
+
+.one_solution ul {
+	margin: 20px 0 0 0;
+	padding: 0;
+	list-style-type: none;
+}
