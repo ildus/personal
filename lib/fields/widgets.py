@@ -36,7 +36,7 @@ class MarkdownEditor(widgets.Textarea):
         return rendered + mark_safe('''
             <script type="text/javascript">
                 $(document).ready(function()    {
-                    $('textarea.markdown_editor').markItUp(myMarkdownSettings);
+                    $('textarea.markdown_editor').markItUp(mySettings);
                 });
             </script>
         ''')
