@@ -1,8 +1,12 @@
 from blog.models import Article, Comment, Category
 from django.contrib import admin
+import lib.fields
+from django.db import models
 
 class ArticleAdmin(admin.ModelAdmin):
-    pass
+    formfield_overrides = {
+        models.TextField: {'widget': lib.fields.MarkdownEditor},
+    }
 
 class CommentAdmin(admin.ModelAdmin):
     pass

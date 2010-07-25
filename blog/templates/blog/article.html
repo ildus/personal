@@ -1,5 +1,12 @@
 {% extends "blog/base.html" %}
 {% load blog_tags %}
+{% block title %} {{article.title}} {% endblock %}
+
+{% block keywords %}
+	<meta name="description" content="{{article.title}}">
+	<meta name="keywords" content="{{article.tags}}">
+{% endblock %}
+
 {% block content %}
 {% if article %}
 	<div class="article">

@@ -13,6 +13,7 @@ from tagging.models import Tag, TaggedItem
 import blog
 
 from lib.filters import filters
+import lib.fields
 
 class Category(models.Model):
     name = models.CharField(_('name'), max_length = 255)
@@ -42,9 +43,9 @@ class Article(models.Model):
     slug = models.SlugField(unique=True)
     category = models.ForeignKey(Category, verbose_name = _('category'))
     
-    title = models.CharField(_('title'), max_length = 255)
-    filter = models.CharField(_('filter'), max_length = 20, choices=[(k, k) for k in filters.keys()], default='markdown')
-    text = models.TextField(_('text'))
+    title =   models.CharField(_('title'), max_length = 255)
+    filter =  models.CharField(_('filter'), max_length = 20, choices=[(k, k) for k in filters.keys()], default='markdown')
+    text =    models.TextField(_('text'))
     created = models.DateTimeField(auto_now_add = True)
     changed = models.DateTimeField(auto_now = True)
     deleted = models.DateTimeField(null = True, editable = False)
