@@ -27,7 +27,7 @@ a {
 }
 
 a:hover {
-	color: #27521B;
+	color: #27a91B;
 	text-decoration: underline;
 }
 
@@ -147,7 +147,7 @@ h1, h2, h3, h4, h5, h6 {
 	}
 	
 	#menu a.header_text:hover {
-		color: #555;
+		color: #964b00;
 		text-decoration: none;
 	}
 
@@ -184,6 +184,14 @@ ul#main_navigation {
 			text-transform: lowercase;
 			font-weight: bold;
 			font-size: 110%;
+		}
+		
+		ul#main_navigation li a.selected {
+			border-bottom: 2px solid #55521B;
+		}
+		
+		ul#main_navigation li a:hover {
+			border-bottom: 2px solid #27a91B;
 		}
 
 #right_col > div {

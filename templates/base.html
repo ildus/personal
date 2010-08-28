@@ -16,8 +16,8 @@
 
 <link rel="stylesheet" href="{{MEDIA_URL}}main/css/base.css" type="text/css" media="screen, projection"/>
 
-<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/dojo/1.4/dijit/themes/nihilo/nihilo.css" />
-<script src="http://ajax.googleapis.com/ajax/libs/dojo/1.4/dojo/dojo.xd.js" type="text/javascript" djConfig="parseOnLoad:true, isDebug:true"></script>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/dojo/1.5/dijit/themes/nihilo/nihilo.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/dojo/1.5/dojo/dojo.xd.js" type="text/javascript" djConfig="parseOnLoad:true, isDebug:true"></script>
 {% block head %} {% endblock %}
 </head>
 <body class="niholo">
@@ -27,11 +27,8 @@
     	<h1> <a class="header_text" href="/"> ildus.org </a> {%block header_text %} {% endblock %} </h1>
     </div>
     <div class="span-8 last navbar"> 
-    	<ul id="main_navigation">
-    		<li><a href="/"> Обо мне </a></li>
-    		<li><a href="/portfolio/"> Портфолио </a></li>
-    		<li><a href="/blog/"> Блог </a></li>
-    	</ul>
+    	{% load main_tags %}
+    	{% main_menu %}
     </div>
   </div>
   <div class="clear span-24 last" id="main"> 

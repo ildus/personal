@@ -5,6 +5,6 @@ from django.conf import settings
 from portfolio import views
 
 urlpatterns = patterns('',
-    (r'^$', views.solutions),
+    url(r'^$', views.solutions, name = 'portfolio'),
     url(r'^tag/(?P<tag>[^/]+)/$', views.solutions_by_tag, name = "ptag"),
 )

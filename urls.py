@@ -11,7 +11,7 @@ urlpatterns = patterns('',
     (r'^portfolio/', include('portfolio.urls')),
     (r'^scipio/', include('scipio.urls')),
     (r'^$', 'main.views.index'),
-    (r'^about/$', 'main.views.about'),
+    url(r'^about/$', 'main.views.about', name = 'about'),
 )
 
 if settings.DEBUG:

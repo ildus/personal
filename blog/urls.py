@@ -3,7 +3,7 @@ from django.conf import settings
 from blog import views
 
 urlpatterns = patterns('',
-    (r'^$', views.articles),
+    url(r'^$', views.articles, name = 'blog'),
     (r'^([a-z0-9_]+)/$', views.article),
     (r'^category/([a-z0-9_]+)/$', views.category),
     (r'^comment/edit/', views.comment_edit),

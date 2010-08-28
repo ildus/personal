@@ -78,9 +78,6 @@ ROOT_URLCONF = 'pro.urls'
 
 TEMPLATE_DIRS = (
     rel('templates'),
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -92,9 +89,9 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 AUTHENTICATION_BACKENDS = (
-          'django.contrib.auth.backends.ModelBackend',
-          'scipio.authentication.OpenIdBackend',
-        )
+      'django.contrib.auth.backends.ModelBackend',
+      'scipio.authentication.OpenIdBackend',
+    )
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -102,7 +99,6 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
-    # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     'south',
     'staticfiles',
