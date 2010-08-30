@@ -222,3 +222,11 @@ ul#main_navigation {
 	#background-color: transparent;
 	vertical-align: top;
 }
+
+address {
+	display: inline;
+}
+
+.hidden {
+	display: none;
+}
