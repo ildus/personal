@@ -8,6 +8,7 @@ pre code {
 	font-size: 13px;
 	border: 1px solid #eee;
 	padding: 5px;
+	font-family: Consolas, monospace;
 }
 
 .one_article {
@@ -38,7 +39,6 @@ pre code {
 	margin-bottom: 10px;
 	padding: 0 10px;
 	font-size: 70.1%;
-	font-family: Verdana, Arial, sans-serif;
 }
 
 .article p {
