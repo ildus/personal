@@ -63,6 +63,10 @@ class Article(models.Model):
     def get_absolute_url(self):
         return blog.views.article, [self.slug]
     
+    def get_full_url(self):
+        from django.contrib.sites.models import Site        
+        return 'http://%s%s' % (Site.objects.get_current().domain, self.get_absolute_url())
+    
     def cat(self):
         ''' Возвращает короткий текст '''
         text = self.text

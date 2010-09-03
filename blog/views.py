@@ -13,6 +13,7 @@ from blog.context import default as default_context
 
 from django.utils import feedgenerator
 from django.core.urlresolvers import reverse
+from django.contrib.sites.models import Site
 
 def render_with_context(func):
     """ decorator with default context of blog """
@@ -97,39 +98,59 @@ class BlogFeed(feedgenerator.Rss201rev2Feed):
             
         handler.addQuickElement(u"pubDate", self.feed['pubdate'])    
         handler.addQuickElement(u"lastBuildDate", self.feed['lastbuilddate'])
+        
+def default_timezone():
+    """
+    Возвращает часовой пояс сервера.
+    Функция подменяет себя во время первого вызова
+    """
+    import pytz
+    from django.conf import settings
+    _default_timezone = pytz.timezone(settings.TIME_ZONE)
+    global default_timezone
+    default_timezone = lambda: _default_timezone
+    return _default_timezone
 
 def rss(request):
+    from django.utils.tzinfo import LocalTimezone
+    
     from datetime import datetime
     from django.utils.feedgenerator import rfc2822_date
+    site = Site.objects.get_current()
     
     items = Article.objects.all()[:50]
     
     latest = Article.objects.latest('created')
     latest_date = latest.created if latest else datetime.now()
     
+    tzinfo = default_timezone()
+    latest_date = latest_date.replace(tzinfo = tzinfo)
+    lastbuilddate = datetime.now().replace(tzinfo = tzinfo)
     
     feed = BlogFeed(
         title = 'Оптимальный веб-блог',
-        link = 'http://ildus.org',
+        link = 'http://%s' % site.domain,
         description = 'Блог о веб-разработке, Django, Python и о других интересных мне вещах',
         language = 'ru',
-        feed_url = reverse('blog_rss'),
+        feed_url = 'http://%s%s' % (site.domain, reverse('blog_rss')),
         categories = [unicode(category) for category in Category.objects.all()],
         pubdate = rfc2822_date(latest_date),
-        lastbuilddate = rfc2822_date(datetime.now()),
+        lastbuilddate = rfc2822_date(lastbuilddate),
         image = None
     )
     
-    for item in items:        
+    for item in items:
+        created_date = item.created.replace(tzinfo = tzinfo)      
+        
         feed.add_item(
             title = item.title,
-            link = item.get_absolute_url(),
+            link = item.get_full_url(),
             description = item.cat(),
-            unique_id = item.get_absolute_url(),
+            unique_id = item.get_full_url(),
             author_name = item.author.get_full_name(),
             author_email = item.author.email,
-            author_link = reverse('about'),
-            pubdate = item.created
+            author_link = 'http://%s%s' % (site.domain, reverse('about')),
+            pubdate = created_date
         )
         
     return HttpResponse(feed.writeString('UTF-8'), mimetype = 'application/rss+xml; charset=utf-8');
