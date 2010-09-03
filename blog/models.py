@@ -70,7 +70,7 @@ class Article(models.Model):
         if p != -1:
             return self.html(text[:p])
         else:
-            None
+            return self.html()
     
     def html(self, text = None):
         '''

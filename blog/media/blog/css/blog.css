@@ -104,3 +104,16 @@ pre code {
 .paginator .next {
 	float: right;
 }
+
+.rss_icon {
+	display: inline-block;	
+	margin-left: 5px;
+	background: transparent url(../images/rss.gif) 0px 0px no-repeat;
+}
+
+.rss_icon a {
+	display: block;
+	text-decoration: none;
+	height: 34px;
+	width: 40px;
+}
