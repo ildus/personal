@@ -1,14 +1,14 @@
 code {
-	background-color: #fffeef;	
+	font-family: Consolas, monospace;
+	color: #944;
 }
 
 pre code {
 	display: block;
 	overflow: auto;
 	font-size: 13px;
-	border: 1px solid #eee;
+	border: 1px dashed #aaa;
 	padding: 5px;
-	font-family: Consolas, monospace;
 }
 
 .one_article {
