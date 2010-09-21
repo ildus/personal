@@ -80,6 +80,7 @@ class BlogFeed(feedgenerator.Rss201rev2Feed):
     
     def add_root_elements(self, handler):
         handler.addQuickElement(u"title", self.feed['title'])
+        handler.addQuickElement(u"greatiful_verification", '21452')
         handler.addQuickElement(u"link", self.feed['link'])
         handler.addQuickElement(u"description", self.feed['description'])
         handler.addQuickElement(u"atom:link", None, {u"rel": u"self", u"href": self.feed['feed_url']})
