@@ -9,7 +9,7 @@ register = template.Library()
 
 @register.inclusion_tag('main_menu.html', takes_context = True)
 def main_menu(context):
-    menu_items = (['blog', 'Блог'], ['about', 'Обо мне'], ['portfolio', 'Портфолио'])
+    menu_items = (['blog', 'Блог'], ['about', 'Обо мне'])#, ['portfolio', 'Портфолио'])
     try:
         path = context['request'].path
     except:

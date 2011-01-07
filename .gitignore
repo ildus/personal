@@ -1,0 +1,15 @@
+*.pyc
+*.pyo
+.project
+.metadata
+.pydevproject
+.settings
+local_settings.py
+local_urls.py
+pip-log.txt
+*.*~
+*.db*
+media/*
+*.kpf
+migrations
+local.db

@@ -22,8 +22,9 @@ def render_with_context(func):
 @render_with_context
 def article(request, slug):
     article = get_object_or_404(Article, slug = slug)
+    comments = Comment.objects.filter(article = article)
     
-    return 'blog/article.html', {'article': article}
+    return 'blog/article.html', locals()
 
 @render_with_context
 @paginate_by('articles', 10)
